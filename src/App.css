@@ -1,0 +1,63 @@
+@import url('https://fonts.googleapis.com/css2?family=Heebo&family=Ubuntu:wght@300;400&display=swap');
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Heebo', sans-serif;
+    font-family: 'Ubuntu', sans-serif;
+}
+.top-navigation {
+    background: linear-gradient(180deg, #D937F1 0%, #0961D8 100%);
+}
+.menu-bar {
+    display: flex;
+    justify-content: space-between;
+    box-sizing: border-box;
+}
+
+.item {
+    color: white;
+    background-color: transparent;
+    font-size: 18px;
+    display: inline-block;
+    box-sizing: border-box;
+    padding: 14px 20px;
+    cursor: default;
+}
+
+.item.title {
+    font-weight: 250;
+}
+
+.item:hover:active{
+    border-radius: 10px;
+    background: #E2346E;
+}
+
+.container {
+    width: 1140px;
+    margin: 0 auto;
+}
+
+.group01 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 200px;
+}
+.title-featured {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.6rem;
+    color: #ffffff;
+    height: 100px;
+}
+.lineneon {
+    height: 5px;
+    border-radius: 100px;
+    background-color: #ffffff;
+    -webkit-box-shadow:0px 0px 10px 5px #E2346E;
+    -moz-box-shadow: 0px 0px 10px 5px #E2346E;
+    box-shadow: 0px 0px 10px 5px #E2346E;
+}
