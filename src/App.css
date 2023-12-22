@@ -81,10 +81,11 @@
 
 
 .event {
-    display:flex;
+    display: flex;
     align-items: center;
     justify-content: center;
-}
+    transition: transform 0.5s ease; /* เพิ่ม transition property ที่นี่ */
+  }  
 .card {
     transition: 0.3s;
     width: 25%;
@@ -138,44 +139,35 @@ p {
     color: #31ff64;
 }  
 
-.slideshow-container {
+.container.eventslide {
     position: relative;
-    max-width: 1200px;
-    margin: 50px;
-    display:flex;
-    align-items: center;
-    justify-content: center;
   }
   
-  .slide {
-    width: 100%;
+  .event .card.active {
+    border: 2px solid #31ff64;
   }
   
-  .prev, .next {
+  .prev,
+  .next {
     position: absolute;
     top: 50%;
-    width: auto;
-    padding: 16px;
-    margin-top: -22px;
-    font-size: 20px;
-    font-weight: bold;
-    cursor: pointer;
-    color: white;
-    background-color: black;
+    transform: translateY(-50%);
+    font-size: 24px;
+    background: linear-gradient(180deg, #0961D8 0%, #D937F1 100%);
     border: none;
-    border-radius: 0 3px 3px 0;
+    color: #ffffff;
+    cursor: pointer;
+    padding: 10px;
+    z-index: 2; /* ให้ปุ่มนี้อยู่ข้างบน */
   }
-  
   .prev {
     left: 0;
-    border-radius: 3px 0 0 3px;
   }
   
   .next {
     right: 0;
   }
-  
-  .prev:hover, .next:hover {
-    background-color: rgba(0, 0, 0, 0.8);
-  }
 
+  /* .slideshow-container {
+    position: relative;
+  } */

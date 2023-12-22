@@ -13,8 +13,9 @@ import Uk from './img/uk_icon.png'
 import "bootstrap-icons/font/bootstrap-icons.css";
 
 function App() {
-
   const [eventData, setEventData] = useState([]);
+  const [currentEvent, setCurrentEvent] = useState(0);
+  const [centerIndex, setCenterIndex] = useState(0);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -51,16 +52,30 @@ function App() {
   };
 
 
-  const [currentEvent, setCurrentEvent] = useState(0);
+  // ตั้งค่าระยะเวลาในการเปลี่ยนการเลือกรายการ (ms)
+  const autoSlideInterval = 2000; // 5 วินาที
 
+  useEffect(() => {
+    const intervalId = setInterval(() => {
+      // เปลี่ยนไปรายการถัดไป
+      setCurrentEvent((prev) => (prev + 1) % eventData.length);
+    }, autoSlideInterval);
+
+    // ทำความสะอาด interval เมื่อ component ถูก unmount
+    return () => clearInterval(intervalId);
+  }, [currentEvent, eventData]);
+
+  // ฟังก์ชันสำหรับการเปลี่ยนไปยังรายการถัดไป
   const nextEvent = () => {
     setCurrentEvent((prev) => (prev + 1) % eventData.length);
   };
 
+  // ฟังก์ชันสำหรับการเปลี่ยนไปยังรายการก่อนหน้า
   const prevEvent = () => {
     setCurrentEvent((prev) => (prev - 1 + eventData.length) % eventData.length);
   };
 
+  // ฟังก์ชันสำหรับการเปลี่ยนไปยังรายการที่กำหนด
   const goToEvent = (index) => {
     setCurrentEvent(index);
   };
@@ -123,6 +138,7 @@ function App() {
               key={index}
               className={`card ${index === currentEvent ? 'active' : ''}`}
               onClick={() => goToEvent(index)}
+              style={{ transform: `translateX(${-currentEvent * 100}%)` }}
             >
               <img 
                 src={event.imageUrl}  
@@ -137,9 +153,9 @@ function App() {
               </div>
             </div>
           ))}
-          <button className="prev" onClick={prevEvent}>&#10094;</button>
-          <button className="next" onClick={nextEvent}>&#10095;</button>
         </div>
+        <div className='prev' onClick={prevEvent}>&#10094;</div>
+        <div className='next' onClick={nextEvent}>&#10095;</div>
       </div>
       <div className='container'>
         <div className="title-featured">
@@ -155,10 +171,10 @@ function App() {
             src={images[currentImage]}
             alt={`Slide ${currentImage + 1}`}
             className="slide"
-            style={{ objectFit: 'cover', width: '100%', height: '200px' }}
+            style={{ objectFit: 'cover', width: '50%', height: '200px' }}
           />
-          <button className="prev" onClick={prevImage}>&#10094;</button>
-          <button className="next" onClick={nextImage}>&#10095;</button>
+          {/* <button className="prev" onClick={prevImage}>&#10094;</button>
+          <button className="next" onClick={nextImage}>&#10095;</button> */}
         </div>
       </div>
       <footer className="footer">
