@@ -52,7 +52,7 @@ function App() {
 
 
   // ตั้งค่าระยะเวลาในการเปลี่ยนการเลือกรายการ (ms)
-  const autoSlideInterval = 5000; // 5 วินาที
+  const autoSlideInterval = 7000; // 5 วินาที
 
   useEffect(() => {
     const intervalId = setInterval(() => {
