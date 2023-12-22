@@ -78,26 +78,6 @@
     -moz-box-shadow: 0px 0px 10px 5px #E2346E;
     box-shadow: 0px 0px 10px 5px #E2346E;
 }
-
-.event {
-    display: flex;
-    align-items: center;
-    justify-content:space-between;
-    transition: transform 0.5s ease;
-    width: 100%; /* เพิ่ม style นี้ */
-  }    
-.card {
-    transition: 0.3s;
-    width: 25%;
-    border-radius: 20px;
-    margin-inline: 10px;
-    overflow: hidden; /* เพิ่มบรรทัดนี้เพื่อให้รูปภาพตัดขอบเมื่อมีขนาดที่ไม่เท่ากัน */
-}
-/* .event .card.active {
-    border: 2px solid #ffffff;
-    box-shadow: 0 0 35px 0 rgba(226,52,110);
-  } */
-  
 .card:hover {
     box-shadow: 0 0 35px 0 rgba(226,52,110);
 }
@@ -164,7 +144,23 @@ p {
   .next {
     right: 0;
   }
-
+  .event {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    transition: transform 0.5s ease;
+    width: 100%;
+    overflow: hidden;
+    padding: 50px;
+  }
+  
+.card {
+    transition: 0.3s;
+    width: 25%;
+    border-radius: 20px;
+    margin-inline: 10px;
+    overflow: hidden; /* เพิ่มบรรทัดนี้เพื่อให้รูปภาพตัดขอบเมื่อมีขนาดที่ไม่เท่ากัน */
+}
 .footer-container {
     width: 1140px;
     margin: 0 auto;
@@ -176,8 +172,4 @@ p {
     justify-content:space-between;
     margin-top: 20px;
 }
-.slideshow-container {
-    display: flex;
-    align-items: center;
-    justify-content:center;
-}
+  
