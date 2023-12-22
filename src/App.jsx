@@ -4,10 +4,10 @@ import Data from './data/data.json'
 import Nightlife from './img/Night_Life-logo.png'
 import Nightlife01 from './img/Night_Life-logo01.png'
 import Data01 from './img/Data01.jpg'
-import Data02 from './img/Data02.jpg'
-import Data03 from './img/Data03.jpg'
 import Data04 from './img/Data04.jpg'
 import Data05 from './img/Data05.jpg'
+import GooglePlay from './img/google_play.png'
+import AppStore from './img/app_store.png'
 import Th from './img/th_icon.png'
 import Uk from './img/uk_icon.png'
 import "bootstrap-icons/font/bootstrap-icons.css";
@@ -15,7 +15,6 @@ import "bootstrap-icons/font/bootstrap-icons.css";
 function App() {
   const [eventData, setEventData] = useState([]);
   const [currentEvent, setCurrentEvent] = useState(0);
-  const [centerIndex, setCenterIndex] = useState(0);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -138,7 +137,10 @@ function App() {
               key={index}
               className={`card ${index === currentEvent ? 'active' : ''}`}
               onClick={() => goToEvent(index)}
-              style={{ transform: `translateX(${-currentEvent * 100}%)` }}
+              style={{
+                transform: `translateX(${-currentEvent * 100}%)`, // ปรับการใช้ translateX ที่นี่
+                flexShrink: 0, 
+              }}
             >
               <img 
                 src={event.imageUrl}  
@@ -167,19 +169,31 @@ function App() {
       </div>
       <div className='container'>
         <div className="slideshow-container">
-          <img
+          {/* <img
             src={images[currentImage]}
             alt={`Slide ${currentImage + 1}`}
             className="slide"
             style={{ objectFit: 'cover', width: '50%', height: '200px' }}
-          />
+          /> */}
           {/* <button className="prev" onClick={prevImage}>&#10094;</button>
           <button className="next" onClick={nextImage}>&#10095;</button> */}
         </div>
       </div>
       <footer className="footer">
-        <div className="footer-container">
-          <p>&copy; 2023 Nightlife. All rights reserved.</p>
+        <div className='container'>
+          <div className="footer-service">
+            <div className='group'>
+              <p>THE NIGHTLIFE MOBILE APPLICATION</p>
+              <img src={GooglePlay} alt='GooglePlay' style={{width:100, margin:10}}/>
+              <img src={AppStore} alt='AppStore' style={{width:100, margin:10}}/>
+            </div>
+            <p>Main item</p>
+            <p>About us</p>
+            <p>Customer Relations Department</p>
+          </div>
+          <div className="footer-container">
+            <p>&copy; 2023 Nightlife. All rights reserved.</p>
+          </div>
         </div>
     </footer>
     </div>
