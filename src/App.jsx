@@ -51,33 +51,39 @@ function App() {
   };
 
 
-  // ตั้งค่าระยะเวลาในการเปลี่ยนการเลือกรายการ (ms)
-  const autoSlideInterval = 7000; // 5 วินาที
+// ตั้งค่าระยะเวลาในการเปลี่ยนการเลือกรายการ (ms)
+const autoSlideInterval = 5000; // 5 วินาที
 
-  useEffect(() => {
-    const intervalId = setInterval(() => {
-      // เปลี่ยนไปรายการถัดไป
-      setCurrentEvent((prev) => (prev + 1) % eventData.length);
-    }, autoSlideInterval);
-
-    // ทำความสะอาด interval เมื่อ component ถูก unmount
-    return () => clearInterval(intervalId);
-  }, [currentEvent, eventData]);
-
-  // ฟังก์ชันสำหรับการเปลี่ยนไปยังรายการถัดไป
-  const nextEvent = () => {
+useEffect(() => {
+  const intervalId = setInterval(() => {
+    // เปลี่ยนไปรายการถัดไป
     setCurrentEvent((prev) => (prev + 1) % eventData.length);
-  };
+  }, autoSlideInterval);
 
-  // ฟังก์ชันสำหรับการเปลี่ยนไปยังรายการก่อนหน้า
-  const prevEvent = () => {
-    setCurrentEvent((prev) => (prev - 1 + eventData.length) % eventData.length);
-  };
+  // ทำความสะอาด interval เมื่อ component ถูก unmount
+  return () => clearInterval(intervalId);
+}, [currentEvent, eventData]);
 
-  // ฟังก์ชันสำหรับการเปลี่ยนไปยังรายการที่กำหนด
-  const goToEvent = (index) => {
-    setCurrentEvent(index);
-  };
+// ฟังก์ชันสำหรับการเปลี่ยนไปยังรายการถัดไป
+const nextEvent = () => {
+  setCurrentEvent((prev) => (prev + 1) % eventData.length);
+};
+
+// ฟังก์ชันสำหรับการเปลี่ยนไปยังรายการก่อนหน้า
+const prevEvent = () => {
+  setCurrentEvent((prev) => (prev - 1 + eventData.length) % eventData.length);
+};
+
+// ฟังก์ชันสำหรับการเริ่มต้นการวน loop ใหม่เมื่อถึงรายการสุดท้าย
+const handleTransitionEnd = () => {
+// ทำให้การวน loop ได้เรื่อย ๆ โดยไม่มีจุดสิ้นสุด
+  setCurrentEvent((prev) => (prev + 1) % eventData.length);
+};
+
+// ฟังก์ชันสำหรับการเปลี่ยนไปยังรายการที่กำหนด
+const goToEvent = (index) => {
+  setCurrentEvent(index);
+};
   return (
     <div className='App'>
       <div className='top-navigation'>
