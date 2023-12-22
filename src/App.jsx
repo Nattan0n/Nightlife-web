@@ -52,7 +52,7 @@ function App() {
 
 
   // ตั้งค่าระยะเวลาในการเปลี่ยนการเลือกรายการ (ms)
-  const autoSlideInterval = 2000; // 5 วินาที
+  const autoSlideInterval = 5000; // 5 วินาที
 
   useEffect(() => {
     const intervalId = setInterval(() => {
@@ -161,7 +161,7 @@ function App() {
       </div>
       <div className='container'>
         <div className="title-featured">
-          <p style={{fontSize:20}}>see all <i className="bi bi-chevron-right"></i></p>
+          <p style={{fontSize:20}}>See all <i className="bi bi-chevron-right"></i></p>
         </div>
       </div>
       <div className='container neon'>
@@ -169,12 +169,12 @@ function App() {
       </div>
       <div className='container'>
         <div className="slideshow-container">
-          {/* <img
+          <img
             src={images[currentImage]}
             alt={`Slide ${currentImage + 1}`}
             className="slide"
-            style={{ objectFit: 'cover', width: '50%', height: '200px' }}
-          /> */}
+            style={{ objectFit: 'cover', width: '50%', height: '200px', margin:'5%'}}
+          />
           {/* <button className="prev" onClick={prevImage}>&#10094;</button>
           <button className="next" onClick={nextImage}>&#10095;</button> */}
         </div>
@@ -182,14 +182,20 @@ function App() {
       <footer className="footer">
         <div className='container'>
           <div className="footer-service">
-            <div className='group'>
-              <p>THE NIGHTLIFE MOBILE APPLICATION</p>
+            <div className='container'>
+              <h4>THE NIGHTLIFE MOBILE APPLICATION</h4>
               <img src={GooglePlay} alt='GooglePlay' style={{width:100, margin:10}}/>
               <img src={AppStore} alt='AppStore' style={{width:100, margin:10}}/>
             </div>
-            <p>Main item</p>
-            <p>About us</p>
-            <p>Customer Relations Department</p>
+            <div className='container'>
+              <h4>Main item</h4> 
+            </div>
+            <div className='container'>
+              <h4>About us</h4>
+            </div>
+            <div className='container'>
+              <h4>Customer Relations Department</h4>
+            </div>
           </div>
           <div className="footer-container">
             <p>&copy; 2023 Nightlife. All rights reserved.</p>
