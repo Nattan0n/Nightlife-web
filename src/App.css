@@ -14,22 +14,39 @@
     justify-content: space-between;
     box-sizing: border-box;
 }
-
-.item {
+.item01 {
     color: white;
     background-color: transparent;
     font-size: 18px;
     display: inline-block;
     box-sizing: border-box;
-    padding: 14px 20px;
+    padding: 15px 10px;
     cursor: default;
 }
 
-.item.title {
+.item01.title01 {
+    font-weight: 250;
+}
+/* .item01:hover{
+    border-radius: 10px;
+    background: #E2346E;
+} */
+
+.item02 {
+    color: white;
+    background-color: transparent;
+    font-size: 18px;
+    display: inline-block;
+    box-sizing: border-box;
+    padding: 14px 15px;
+    cursor: default;
+}
+
+.item02.title02 {
     font-weight: 250;
 }
 
-.item:hover:active{
+.item02:hover:active{
     border-radius: 10px;
     background: #E2346E;
 }
@@ -61,3 +78,104 @@
     -moz-box-shadow: 0px 0px 10px 5px #E2346E;
     box-shadow: 0px 0px 10px 5px #E2346E;
 }
+
+
+.event {
+    display:flex;
+    align-items: center;
+    justify-content: center;
+}
+.card {
+    transition: 0.3s;
+    width: 25%;
+    border-radius: 20px;
+    margin-inline: 10px;
+    overflow: hidden; /* เพิ่มบรรทัดนี้เพื่อให้รูปภาพตัดขอบเมื่อมีขนาดที่ไม่เท่ากัน */
+}
+.event .card.active {
+    border: 2px solid #31ff64;
+  }
+  
+.card:hover {
+    box-shadow: 0 0 35px 0 rgba(226,52,110);
+}
+
+.imgcard {
+    border-radius: 20px 20px 0 0;
+    width: 100%;
+    max-height: 350px;
+
+}
+
+.box {
+    padding: 20px 10px;
+    background: rgba(64, 47, 117, 0.40);
+    border-radius: 0 0 20px 20px;
+}
+.item03 {
+    margin: 10px;
+    cursor: default;
+}
+h3 {
+    color: #E2346E;
+}
+p {
+    color: #ffffff;
+    cursor: default;
+}
+.footer {
+    background: linear-gradient(180deg, #0961D8 0%, #D937F1 100%);
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+    /* position: fixed; */
+    bottom: 0;
+    width: 100%;
+}
+.footer-container {
+    width: 1140px;
+    margin: 0 auto;
+    color: #31ff64;
+}  
+
+.slideshow-container {
+    position: relative;
+    max-width: 1200px;
+    margin: 50px;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .slide {
+    width: 100%;
+  }
+  
+  .prev, .next {
+    position: absolute;
+    top: 50%;
+    width: auto;
+    padding: 16px;
+    margin-top: -22px;
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+    color: white;
+    background-color: black;
+    border: none;
+    border-radius: 0 3px 3px 0;
+  }
+  
+  .prev {
+    left: 0;
+    border-radius: 3px 0 0 3px;
+  }
+  
+  .next {
+    right: 0;
+  }
+  
+  .prev:hover, .next:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+  }
+

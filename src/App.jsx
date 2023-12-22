@@ -1,10 +1,69 @@
-import { useState } from 'react'
+import {useEffect, useState} from 'react'
 import './App.css'
+import Data from './data/data.json'
 import Nightlife from './img/Night_Life-logo.png'
 import Nightlife01 from './img/Night_Life-logo01.png'
 import Data01 from './img/Data01.jpg'
+import Data02 from './img/Data02.jpg'
+import Data03 from './img/Data03.jpg'
+import Data04 from './img/Data04.jpg'
+import Data05 from './img/Data05.jpg'
+import Th from './img/th_icon.png'
+import Uk from './img/uk_icon.png'
+import "bootstrap-icons/font/bootstrap-icons.css";
 
 function App() {
+
+  const [eventData, setEventData] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch('../src/data/data.json');
+        const data = await response.json();
+        setEventData(data);
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
+    };
+
+    fetchData();
+  }, []);
+
+  const images = [
+    Data01,
+    Data04,
+    Data05,
+    // เพิ่มรูปภาพตามต้องการ
+  ];
+  const [currentImage, setCurrentImage] = useState(0);
+
+  const nextImage = () => {
+    setCurrentImage((prev) => (prev + 1) % images.length);
+  };
+  
+  const prevImage = () => {
+    setCurrentImage((prev) => (prev - 1 + images.length) % images.length);
+  };
+  
+  const goToImage = (index) => {
+    setCurrentImage(index);
+  };
+
+
+  const [currentEvent, setCurrentEvent] = useState(0);
+
+  const nextEvent = () => {
+    setCurrentEvent((prev) => (prev + 1) % eventData.length);
+  };
+
+  const prevEvent = () => {
+    setCurrentEvent((prev) => (prev - 1 + eventData.length) % eventData.length);
+  };
+
+  const goToEvent = (index) => {
+    setCurrentEvent(index);
+  };
   return (
     <div className='App'>
       <div className='top-navigation'>
@@ -12,36 +71,44 @@ function App() {
           <div className='row'>
             <nav className="menu-bar">
               <div className="group">
-                <a className="item title">
+                <a className="title01">
                   <img src={Nightlife01} alt="Logo Night Life" style={{width: 250}}/>
                 </a>
               </div>
               <div className="group">
-                <a className="item">Link 1</a>
-                <a className="item">Link 2</a>
+                <a className="item01">฿THB<i className="bi bi-chevron-down"></i></a>
+                <a className="item01">
+                  <img 
+                    src={Th} 
+                    alt="TH" 
+                    style={{width: 35,paddingInline:10}} 
+                  />
+                  TH
+                  <i className="bi bi-chevron-down"></i>
+                </a>
               </div>
             </nav>
           </div>
           <div className='row'>
             <nav className="menu-bar">
               <div className="group">
-                <a className="item active">Home</a>
-                <a className="item">Events</a>
-                <a className="item">Nightclub</a>
-                <a className="item">Venues</a>
-                <a className="item">Deals</a>
-                <a className="item">News</a>
+                <a className="item02 active">Home</a>
+                <a className="item02">Events</a>
+                <a className="item02">Nightclub</a>
+                <a className="item02">Venues</a>
+                <a className="item02">Deals</a>
+                <a className="item02">News</a>
               </div>
             </nav>
           </div>
         </div>
-      </div>
+      </div> 
       <div className='container'>
         <div className="group01">
           <img src={Nightlife} alt="Logo Night Life" style={{width: 200}}/>
         </div>
       </div>
-      <div className='container'>
+      <div className='container neon'>
         <div className="lineneon"></div>
       </div>
       <div className='container'>
@@ -49,11 +116,56 @@ function App() {
           <p>Featured</p>
         </div>
       </div>
-      <div className='container'>
-        <div>
-          <img src={Data01} alt="Logo Night Life" style={{width: 300}}/>
+      <div className='container eventslide'>
+        <div className='event'>
+          {eventData.map((event, index) => (
+            <div
+              key={index}
+              className={`card ${index === currentEvent ? 'active' : ''}`}
+              onClick={() => goToEvent(index)}
+            >
+              <img 
+                src={event.imageUrl}  
+                alt='Avatar'
+                className='imgcard'
+              />
+              <div className="box">
+                <h3 className='item03'><b>{event.caption}</b></h3> 
+                <p className='item03' style={{ color: '#31ff64' }}><i className="bi bi-calendar3"></i> {event.date}</p>
+                <p className='item03' style={{ color: '#31ff64' }}><i className="bi bi-clock"></i> {event.time}</p>
+                <p className='item03'><i className="bi bi-geo-alt-fill"></i> {event.location}</p>   
+              </div>
+            </div>
+          ))}
+          <button className="prev" onClick={prevEvent}>&#10094;</button>
+          <button className="next" onClick={nextEvent}>&#10095;</button>
         </div>
       </div>
+      <div className='container'>
+        <div className="title-featured">
+          <p style={{fontSize:20}}>see all <i className="bi bi-chevron-right"></i></p>
+        </div>
+      </div>
+      <div className='container neon'>
+        <div className="lineneon"></div>
+      </div>
+      <div className='container'>
+        <div className="slideshow-container">
+          <img
+            src={images[currentImage]}
+            alt={`Slide ${currentImage + 1}`}
+            className="slide"
+            style={{ objectFit: 'cover', width: '100%', height: '200px' }}
+          />
+          <button className="prev" onClick={prevImage}>&#10094;</button>
+          <button className="next" onClick={nextImage}>&#10095;</button>
+        </div>
+      </div>
+      <footer className="footer">
+        <div className="footer-container">
+          <p>&copy; 2023 Nightlife. All rights reserved.</p>
+        </div>
+    </footer>
     </div>
   )
 }
