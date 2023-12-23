@@ -22,21 +22,21 @@
     },
     { 
         "imageUrl": "../src/img/Data04.jpg", 
-        "caption": "Caption 3", 
+        "caption": "Caption 4", 
         "date": "24 / DEC / 2023", 
         "time": "20.00 PM - 12.00 AM", 
         "location": "115 Village No.12,Kampa" 
     },
     { 
         "imageUrl": "../src/img/Data05.jpg", 
-        "caption": "Caption 3", 
+        "caption": "Caption 5", 
         "date": "24 / DEC / 2023", 
         "time": "20.00 PM - 12.00 AM", 
         "location": "115 Village No.12,Kampa" 
     },
     { 
         "imageUrl": "../src/img/Data06.jpg", 
-        "caption": "Caption 3", 
+        "caption": "Caption 6", 
         "date": "24 / DEC / 2023", 
         "time": "20.00 PM - 12.00 AM", 
         "location": "115 Village No.12,Kampa" 
