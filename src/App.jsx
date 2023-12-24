@@ -15,6 +15,7 @@ import "bootstrap-icons/font/bootstrap-icons.css";
 function App() {
   const [eventData, setEventData] = useState([]);
   const [currentEvent, setCurrentEvent] = useState(0);
+  const duplicatedEventData = Array.from({ length: 50 }, () => eventData).flat();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -29,30 +30,8 @@ function App() {
 
     fetchData();
   }, []);
-
-  const images = [
-    Data01,
-    Data04,
-    Data05,
-    // เพิ่มรูปภาพตามต้องการ
-  ];
-  const [currentImage, setCurrentImage] = useState(0);
-
-  const nextImage = () => {
-    setCurrentImage((prev) => (prev + 1) % images.length);
-  };
-  
-  const prevImage = () => {
-    setCurrentImage((prev) => (prev - 1 + images.length) % images.length);
-  };
-  
-  const goToImage = (index) => {
-    setCurrentImage(index);
-  };
-
-
 // ตั้งค่าระยะเวลาในการเปลี่ยนการเลือกรายการ (ms)
-const autoSlideInterval = 5000; // 5 วินาที
+const autoSlideInterval = 7000; // 7 วินาที
 
 useEffect(() => {
   const intervalId = setInterval(() => {
@@ -64,20 +43,12 @@ useEffect(() => {
   return () => clearInterval(intervalId);
 }, [currentEvent, eventData]);
 
-// ฟังก์ชันสำหรับการเปลี่ยนไปยังรายการถัดไป
 const nextEvent = () => {
-  setCurrentEvent((prev) => (prev + 1) % eventData.length);
+  setCurrentEvent((prevEvent) => (prevEvent + 1) % duplicatedEventData.length);
 };
 
-// ฟังก์ชันสำหรับการเปลี่ยนไปยังรายการก่อนหน้า
 const prevEvent = () => {
-  setCurrentEvent((prev) => (prev - 1 + eventData.length) % eventData.length);
-};
-
-// ฟังก์ชันสำหรับการเริ่มต้นการวน loop ใหม่เมื่อถึงรายการสุดท้าย
-const handleTransitionEnd = () => {
-// ทำให้การวน loop ได้เรื่อย ๆ โดยไม่มีจุดสิ้นสุด
-  setCurrentEvent((prev) => (prev + 1) % eventData.length);
+  setCurrentEvent((prevEvent) => (prevEvent - 1 + duplicatedEventData.length) % duplicatedEventData.length);
 };
 
 // ฟังก์ชันสำหรับการเปลี่ยนไปยังรายการที่กำหนด
@@ -138,7 +109,7 @@ const goToEvent = (index) => {
       </div>
       <div className='container eventslide'>
         <div className='event'>
-          {eventData.map((event, index) => (
+          {duplicatedEventData.map((event, index) => (
             <div
               key={index}
               className={`card ${index === currentEvent ? 'active' : ''}`}
@@ -175,12 +146,12 @@ const goToEvent = (index) => {
       </div>
       <div className='container'>
         <div className="slideshow-container">
-          <img
+          {/* <img
             src={images[currentImage]}
             alt={`Slide ${currentImage + 1}`}
             className="slide"
             style={{ objectFit: 'cover', width: '50%', height: '200px', margin:'5%'}}
-          />
+          /> */}
           {/* <button className="prev" onClick={prevImage}>&#10094;</button>
           <button className="next" onClick={nextImage}>&#10095;</button> */}
         </div>
