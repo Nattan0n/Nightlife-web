@@ -14,7 +14,7 @@ import "bootstrap-icons/font/bootstrap-icons.css";
 
 function App() {
   const [eventData, setEventData] = useState([]);
-  const [currentEvent, setCurrentEvent] = useState(0);
+  const [currentEvent, setCurrentEvent] = useState(50);
   const duplicatedEventData = Array.from({ length: 50 }, () => eventData).flat();
 
   useEffect(() => {
@@ -31,12 +31,12 @@ function App() {
     fetchData();
   }, []);
   // ตั้งค่าระยะเวลาในการเปลี่ยนการเลือกรายการ (ms)
-  const autoSlideInterval = 7000; // 7 วินาที
+  const autoSlideInterval = 5000; // 5 วินาที
 
   useEffect(() => {
     const intervalId = setInterval(() => {
       // เปลี่ยนไปรายการถัดไป
-      setCurrentEvent((prev) => (prev + 1) % eventData.length);
+      setCurrentEvent((prev) => (prev + 1) % duplicatedEventData.length);
     }, autoSlideInterval);
 
     // ทำความสะอาด interval เมื่อ component ถูก unmount
@@ -44,21 +44,38 @@ function App() {
   }, [currentEvent, eventData]);
 
   const nextEvent = () => {
-    setCurrentEvent((nextEvent) => (nextEvent + 1) % duplicatedEventData.length);
+    setCurrentEvent((prevEvent) => (prevEvent + 1) % duplicatedEventData.length);
   };
 
   const prevEvent = () => {
     setCurrentEvent((prevEvent) => (prevEvent - 1 + duplicatedEventData.length) % duplicatedEventData.length);
   };
-
   // ฟังก์ชันสำหรับการเปลี่ยนไปยังรายการที่กำหนด
   const goToEvent = (index) => {
     setCurrentEvent(index);
   };
+
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrolled = window.scrollY > 50;
+      setIsScrolled(scrolled);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
+
+  
   return (
-    <div className='App'>
-      <div className='top-navigation'>
-        <div className='container top-navigation'>
+    <div className={`App ${isScrolled ? 'scrolled' : ''}`}>
+      <div className={`top-navigation ${isScrolled ? 'scrolled' : ''}`}>
+        <div className='container'>
           <div className='row'>
             <nav className="menu-bar">
               <div className="group">
@@ -81,7 +98,7 @@ function App() {
             </nav>
           </div>
           <div className='row'>
-            <nav className="menu-bar">
+            <nav className={`menu-bar ${isScrolled ? 'scrolled' : 'not-scrolled'}`}>
               <div className="group">
                 <a className="item02 active">Home</a>
                 <a className="item02">Events</a>

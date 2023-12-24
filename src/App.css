@@ -8,11 +8,41 @@
 }
 .top-navigation {
     background: linear-gradient(180deg, #D937F1 0%, #0961D8 100%);
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    transition: top 0.3s;
 }
+.top-navigation.scrolled {
+    top: -50px; /* หรือค่าที่คุณต้องการให้ top-navigation หายไปเมื่อ scroll */
+}
+
+/* เพิ่มสไตล์ของ Navigation Bar ในสถานะปกติ */
 .menu-bar {
     display: flex;
     justify-content: space-between;
     box-sizing: border-box;
+    transition: transform 0.3s;
+    /* ... สไตล์เพิ่มเติมที่คุณต้องการ ... */
+}
+.menu-bar.scrolled {
+    transform: translateY(0);
+}
+
+.menu-bar.fixed {
+    position: fixed;
+    top: 50px; 
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    background-color: linear-gradient(180deg, #D937F1 0%, #0961D8 100%);
+}
+
+/* เพิ่มคลาสสำหรับสถานะที่ไม่เลื่อน */
+.menu-bar.not-scrolled {
+    /* ... สไตล์ที่ไม่ใช่เลื่อน ... */
 }
 .item01 {
     color: white;
@@ -61,6 +91,7 @@
     justify-content: center;
     align-items: center;
     height: 200px;
+    margin-top: 10%;
 }
 .title-featured {
     display: flex;
