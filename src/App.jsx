@@ -14,8 +14,8 @@ import "bootstrap-icons/font/bootstrap-icons.css";
 
 function App() {
   const [eventData, setEventData] = useState([]);
-  const [currentEvent, setCurrentEvent] = useState(50);
-  const duplicatedEventData = Array.from({ length: 50 }, () => eventData).flat();
+  const [currentEvent, setCurrentEvent] = useState(20);
+  const duplicatedEventData = Array.from({ length: 40 }, () => eventData).flat();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -31,7 +31,7 @@ function App() {
     fetchData();
   }, []);
   // ตั้งค่าระยะเวลาในการเปลี่ยนการเลือกรายการ (ms)
-  const autoSlideInterval = 5000; // 5 วินาที
+  const autoSlideInterval = 7000; // 7 วินาที
 
   useEffect(() => {
     const intervalId = setInterval(() => {
