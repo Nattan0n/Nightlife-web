@@ -30,31 +30,31 @@ function App() {
 
     fetchData();
   }, []);
-// ตั้งค่าระยะเวลาในการเปลี่ยนการเลือกรายการ (ms)
-const autoSlideInterval = 7000; // 7 วินาที
+  // ตั้งค่าระยะเวลาในการเปลี่ยนการเลือกรายการ (ms)
+  const autoSlideInterval = 7000; // 7 วินาที
 
-useEffect(() => {
-  const intervalId = setInterval(() => {
-    // เปลี่ยนไปรายการถัดไป
-    setCurrentEvent((prev) => (prev + 1) % eventData.length);
-  }, autoSlideInterval);
+  useEffect(() => {
+    const intervalId = setInterval(() => {
+      // เปลี่ยนไปรายการถัดไป
+      setCurrentEvent((prev) => (prev + 1) % eventData.length);
+    }, autoSlideInterval);
 
-  // ทำความสะอาด interval เมื่อ component ถูก unmount
-  return () => clearInterval(intervalId);
-}, [currentEvent, eventData]);
+    // ทำความสะอาด interval เมื่อ component ถูก unmount
+    return () => clearInterval(intervalId);
+  }, [currentEvent, eventData]);
 
-const nextEvent = () => {
-  setCurrentEvent((prevEvent) => (prevEvent + 1) % duplicatedEventData.length);
-};
+  const nextEvent = () => {
+    setCurrentEvent((nextEvent) => (nextEvent + 1) % duplicatedEventData.length);
+  };
 
-const prevEvent = () => {
-  setCurrentEvent((prevEvent) => (prevEvent - 1 + duplicatedEventData.length) % duplicatedEventData.length);
-};
+  const prevEvent = () => {
+    setCurrentEvent((prevEvent) => (prevEvent - 1 + duplicatedEventData.length) % duplicatedEventData.length);
+  };
 
-// ฟังก์ชันสำหรับการเปลี่ยนไปยังรายการที่กำหนด
-const goToEvent = (index) => {
-  setCurrentEvent(index);
-};
+  // ฟังก์ชันสำหรับการเปลี่ยนไปยังรายการที่กำหนด
+  const goToEvent = (index) => {
+    setCurrentEvent(index);
+  };
   return (
     <div className='App'>
       <div className='top-navigation'>
