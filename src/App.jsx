@@ -1,11 +1,7 @@
 import {useEffect, useState} from 'react'
 import './App.css'
-import Data from './data/data.json'
 import Nightlife from './img/Night_Life-logo.png'
 import Nightlife01 from './img/Night_Life-logo01.png'
-import Data01 from './img/Data01.jpg'
-import Data04 from './img/Data04.jpg'
-import Data05 from './img/Data05.jpg'
 import GooglePlay from './img/google_play.png'
 import AppStore from './img/app_store.png'
 import Th from './img/th_icon.png'
@@ -14,8 +10,8 @@ import "bootstrap-icons/font/bootstrap-icons.css";
 
 function App() {
   const [eventData, setEventData] = useState([]);
-  const [currentEvent, setCurrentEvent] = useState(20);
-  const duplicatedEventData = Array.from({ length: 40 }, () => eventData).flat();
+  const [currentEvent, setCurrentEvent] = useState(10);
+  const duplicatedEventData = Array.from({ length: 10 }, () => eventData).flat();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -69,8 +65,6 @@ function App() {
       window.removeEventListener('scroll', handleScroll);
     };
   }, []);
-
-
   
   return (
     <div className={`App ${isScrolled ? 'scrolled' : ''}`}>
@@ -163,14 +157,18 @@ function App() {
       </div>
       <div className='container'>
         <div className="slideshow-container">
-          {/* <img
-            src={images[currentImage]}
-            alt={`Slide ${currentImage + 1}`}
-            className="slide"
-            style={{ objectFit: 'cover', width: '50%', height: '200px', margin:'5%'}}
-          /> */}
-          {/* <button className="prev" onClick={prevImage}>&#10094;</button>
-          <button className="next" onClick={nextImage}>&#10095;</button> */}
+          {duplicatedEventData[currentEvent] && (
+            <>
+              {Array.from({ length: 3 }).map((_, index) => (
+                <img 
+                  key={index}
+                  src={duplicatedEventData[currentEvent].imageUrl}  
+                  alt='Avatar'
+                  style={{ objectFit: 'cover', width: '40%', height: '200px', marginBlock:'5%',marginInline:10, borderRadius:25}}
+                />
+              ))}
+            </>
+          )}
         </div>
       </div>
       <footer className="footer">

@@ -6,6 +6,9 @@
     font-family: 'Heebo', sans-serif;
     font-family: 'Ubuntu', sans-serif;
 }
+.App {
+    overflow: hidden;
+}
 .top-navigation {
     background: linear-gradient(180deg, #D937F1 0%, #0961D8 100%);
     position: fixed;
@@ -192,6 +195,12 @@ p {
     border-radius: 20px;
     margin-inline: 10px;
     overflow: hidden; /* เพิ่มบรรทัดนี้เพื่อให้รูปภาพตัดขอบเมื่อมีขนาดที่ไม่เท่ากัน */
+}
+
+.slideshow-container {
+    display: flex;
+    align-items: center;
+    justify-content:center;
 }
 .footer-container {
     width: 1140px;

@@ -1,4 +1,9 @@
-body {
+body {	
+  border-radius: 26px;
+  opacity: 0.88;
   background: #231061;
-  
+}
+svg {
+  position: fixed;
+  overflow: hidden;
 }
