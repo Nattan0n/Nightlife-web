@@ -83,6 +83,10 @@
     border-radius: 10px;
     background: #E2346E;
 }
+.item02.active {
+    background-color: #E2346E;
+    border-radius: 10px;
+  }
 
 .container {
     width: 1140px;
@@ -153,10 +157,10 @@ p {
     position: relative;
   }
   
-  .event .card.active {
-    /* border: 5px solid #ffffff; */
-    /* box-shadow: 0 0 35px 0 rgba(226,52,110); */
-  }
+  /* .event .card.active {
+    border: 5px solid #ffffff;
+    box-shadow: 0 0 35px 0 rgba(226,52,110);
+  } */
   
   .prev,
   .next {
@@ -178,6 +182,11 @@ p {
   
   .next {
     right: 0;
+  }
+  .next:hover, 
+  .prev:hover {
+    color: #ffffff;
+    background: linear-gradient(180deg, #0961D8 0%, #D937F1 100%);
   }
   .event {
     display: flex;

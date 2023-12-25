@@ -9,6 +9,7 @@ import Uk from './img/uk_icon.png'
 import "bootstrap-icons/font/bootstrap-icons.css";
 
 function App() {
+  const [currentPage, setCurrentPage] = useState('home');
   const [eventData, setEventData] = useState([]);
   const [currentEvent, setCurrentEvent] = useState(10);
   const duplicatedEventData = Array.from({ length: 10 }, () => eventData).flat();
@@ -65,7 +66,7 @@ function App() {
       window.removeEventListener('scroll', handleScroll);
     };
   }, []);
-  
+
   return (
     <div className={`App ${isScrolled ? 'scrolled' : ''}`}>
       <div className={`top-navigation ${isScrolled ? 'scrolled' : ''}`}>
@@ -94,7 +95,7 @@ function App() {
           <div className='row'>
             <nav className={`menu-bar ${isScrolled ? 'scrolled' : 'not-scrolled'}`}>
               <div className="group">
-                <a className="item02 active">Home</a>
+                <a className={`item02 ${currentPage === 'home' ? 'active' : ''}`} onClick={() => setCurrentPage('home')}>Home</a>
                 <a className="item02">Events</a>
                 <a className="item02">Nightclub</a>
                 <a className="item02">Venues</a>
