@@ -1,22 +1,41 @@
-import React, { useState } from 'react';
+import React from 'react';
+import Th from '../img/th_icon.png';
+import Uk from '../img/uk_icon.png';
+import Cn from '../img/cn_icon.png';
+import '../Dropdown.css'; // เพิ่ม import CSS
 
 const Dropdown = () => {
-  const [isOpen, setIsOpen] = useState(false);
-
-  const toggleDropdown = () => {
-    setIsOpen(!isOpen);
-  };
-
   return (
     <div className="dropdown">
-      <button onClick={toggleDropdown}>Toggle Dropdown</button>
-      {isOpen && (
-        <ul>
-          <li>Option 1</li>
-          <li>Option 2</li>
-          <li>Option 3</li>
-        </ul>
-      )}
+        <button className='item01'>
+        <img
+            src={Th}
+            alt="Thailand"
+            style={{ width: 'auto', height: '18px', marginRight: '5px', border: '1px solid #fff', borderRadius: '10px' }}
+        />
+        TH
+        <i className="bi bi-chevron-down"></i>
+        </button>
+        <div className="dropdown-content">
+            <ul>
+            <li>
+                <img
+                    src={Uk}
+                    alt="United Kingdom"
+                    style={{ width: 'auto', height: '18px', marginRight: '5px', border: '1px solid #fff', borderRadius: '10px' }}
+                />
+                UK
+            </li>
+            <li>
+                <img
+                    src={Cn}
+                    alt="CN"
+                    style={{ width: 'auto', height: '18px', marginRight: '5px', border: '1px solid #fff', borderRadius: '10px' }}
+                />
+                CN
+            </li>
+            </ul>
+        </div>
     </div>
   );
 };

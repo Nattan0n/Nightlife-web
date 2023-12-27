@@ -47,45 +47,6 @@
 .menu-bar.not-scrolled {
     /* ... สไตล์ที่ไม่ใช่เลื่อน ... */
 }
-
-/* App.css */
-
-.dropdown {
-    position: relative;
-    display: inline-block;
-  }
-  
-  button {
-    padding: 10px;
-    cursor: pointer;
-  }
-  
-  ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    position: absolute;
-    top: 100%;
-    left: 0;
-    background-color: #fff;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    display: none;
-  }
-  
-  ul li {
-    padding: 10px;
-    border-bottom: 1px solid #ccc;
-  }
-  
-  ul li:last-child {
-    border-bottom: none;
-  }
-  
-  .dropdown:hover ul {
-    display: block;
-  }
-
-  
 .item01 {
     color: white;
     background-color: transparent;
@@ -93,16 +54,16 @@
     display: inline-block;
     box-sizing: border-box;
     padding: 15px 10px;
-    cursor: default;
+    cursor: pointer;
 }
 
 .item01.title01 {
     font-weight: 250;
 }
-/* .item01:hover{
+.item01:hover{
     border-radius: 10px;
     background: #E2346E;
-} */
+}
 
 .item02 {
     color: white;

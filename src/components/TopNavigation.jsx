@@ -1,7 +1,5 @@
 import React from 'react'
 import Nightlife01 from '../img/Night_Life-logo01.png';
-import Th from '../img/th_icon.png';
-import Uk from '../img/uk_icon.png';
 import Dropdown from './Dropdown';
 import "bootstrap-icons/font/bootstrap-icons.css";
 
@@ -18,18 +16,6 @@ const TopNavigation = ({ isScrolled, currentPage, setCurrentPage }) => {
             </div>
             <div className="group">
               <a className="item01">฿THB<i className="bi bi-chevron-down"></i></a>
-              <a
-                className={`item01 ${currentPage === 'home' ? 'active' : ''}`}
-                onClick={() => setCurrentPage('home')}
-              >
-                <img
-                  src={Th}
-                  alt="TH"
-                  style={{ width: 35, paddingInline: 10 }}
-                />
-                TH
-                <i className="bi bi-chevron-down"></i>
-              </a>
               <Dropdown/>
             </div>
           </nav>
