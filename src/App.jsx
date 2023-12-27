@@ -1,12 +1,10 @@
 import {useEffect, useState} from 'react'
 import './App.css'
+import "bootstrap-icons/font/bootstrap-icons.css"
 import Nightlife from './img/Night_Life-logo.png'
-import Nightlife01 from './img/Night_Life-logo01.png'
-import GooglePlay from './img/google_play.png'
-import AppStore from './img/app_store.png'
-import Th from './img/th_icon.png'
-import Uk from './img/uk_icon.png'
-import "bootstrap-icons/font/bootstrap-icons.css";
+import TopNavigation from './components/TopNavigation'
+import Neonline from './components/Neonline'
+import Footer from './components/Footer'
 
 function App() {
   const [currentPage, setCurrentPage] = useState('home');
@@ -69,51 +67,17 @@ function App() {
 
   return (
     <div className={`App ${isScrolled ? 'scrolled' : ''}`}>
-      <div className={`top-navigation ${isScrolled ? 'scrolled' : ''}`}>
-        <div className='container'>
-          <div className='row'>
-            <nav className="menu-bar">
-              <div className="group">
-                <a className="title01">
-                  <img src={Nightlife01} alt="Logo Night Life" style={{width: 250}}/>
-                </a>
-              </div>
-              <div className="group">
-                <a className="item01">฿THB<i className="bi bi-chevron-down"></i></a>
-                <a className="item01">
-                  <img 
-                    src={Th} 
-                    alt="TH" 
-                    style={{width: 35,paddingInline:10}} 
-                  />
-                  TH
-                  <i className="bi bi-chevron-down"></i>
-                </a>
-              </div>
-            </nav>
-          </div>
-          <div className='row'>
-            <nav className={`menu-bar ${isScrolled ? 'scrolled' : 'not-scrolled'}`}>
-              <div className="group">
-                <a className={`item02 ${currentPage === 'home' ? 'active' : ''}`} onClick={() => setCurrentPage('home')}>Home</a>
-                <a className="item02">Events</a>
-                <a className="item02">Nightclub</a>
-                <a className="item02">Venues</a>
-                <a className="item02">Deals</a>
-                <a className="item02">News</a>
-              </div>
-            </nav>
-          </div>
-        </div>
-      </div> 
+      <TopNavigation
+        isScrolled={isScrolled}
+        currentPage={currentPage}
+        setCurrentPage={setCurrentPage}
+      />
       <div className='container'>
         <div className="group01">
           <img src={Nightlife} alt="Logo Night Life" style={{width: 200}}/>
         </div>
       </div>
-      <div className='container neon'>
-        <div className="lineneon"></div>
-      </div>
+      <Neonline/>
       <div className='container'>
         <div className="title-featured">
           <p>Featured</p>
@@ -153,9 +117,7 @@ function App() {
           <p style={{fontSize:20}}>See all <i className="bi bi-chevron-right"></i></p>
         </div>
       </div>
-      <div className='container neon'>
-        <div className="lineneon"></div>
-      </div>
+      <Neonline/>
       <div className='container'>
         <div className="slideshow-container">
           {duplicatedEventData[currentEvent] && (
@@ -172,29 +134,7 @@ function App() {
           )}
         </div>
       </div>
-      <footer className="footer">
-        <div className='container'>
-          <div className="footer-service">
-            <div className='container'>
-              <h4>THE NIGHTLIFE MOBILE APPLICATION</h4>
-              <img src={GooglePlay} alt='GooglePlay' style={{width:100, margin:10}}/>
-              <img src={AppStore} alt='AppStore' style={{width:100, margin:10}}/>
-            </div>
-            <div className='container'>
-              <h4>Main item</h4> 
-            </div>
-            <div className='container'>
-              <h4>About us</h4>
-            </div>
-            <div className='container'>
-              <h4>Customer Relations Department</h4>
-            </div>
-          </div>
-          <div className="footer-container">
-            <p>&copy; 2023 Nightlife. All rights reserved.</p>
-          </div>
-        </div>
-    </footer>
+      <Footer/>
     </div>
   )
 }
