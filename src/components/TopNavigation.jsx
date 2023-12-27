@@ -1,6 +1,6 @@
 import React from 'react'
 import Nightlife01 from '../img/Night_Life-logo01.png';
-import Dropdown from './Dropdown';
+import Dropdown_link_lang from './Dropdown_link-lang';
 import "bootstrap-icons/font/bootstrap-icons.css";
 
 const TopNavigation = ({ isScrolled, currentPage, setCurrentPage }) => {
@@ -16,7 +16,7 @@ const TopNavigation = ({ isScrolled, currentPage, setCurrentPage }) => {
             </div>
             <div className="group">
               <a className="item01">฿THB<i className="bi bi-chevron-down"></i></a>
-              <Dropdown/>
+              <Dropdown_link_lang/>
             </div>
           </nav>
         </div>
