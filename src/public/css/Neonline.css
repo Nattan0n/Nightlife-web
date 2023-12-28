@@ -1,0 +1,8 @@
+.lineneon {
+    height: 5px;
+    border-radius: 100px;
+    background-color: #ffffff;
+    -webkit-box-shadow:0px 0px 10px 5px #E2346E;
+    -moz-box-shadow: 0px 0px 10px 5px #E2346E;
+    box-shadow: 0px 0px 10px 5px #E2346E;
+}

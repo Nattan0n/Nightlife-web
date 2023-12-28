@@ -1,8 +1,8 @@
-import React from 'react';
-import Th from '../img/th_icon.png';
-import Uk from '../img/uk_icon.png';
-import Cn from '../img/cn_icon.png';
-import '../Dropdown.css'; // เพิ่ม import CSS
+import React from 'react'
+import Th from '../img/th_icon.png'
+import Uk from '../img/uk_icon.png'
+import Cn from '../img/cn_icon.png'
+
 
 const Dropdown = () => {
   return (

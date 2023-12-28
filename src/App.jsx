@@ -1,5 +1,5 @@
 import {useEffect, useState} from 'react'
-import './App.css'
+import './public/css/App.css'
 import "bootstrap-icons/font/bootstrap-icons.css"
 import Nightlife from './img/Night_Life-logo.png'
 import TopNavigation from './components/TopNavigation'
@@ -132,6 +132,12 @@ function App() {
               ))}
             </>
           )}
+        </div>
+      </div>
+      <Neonline/>
+      <div className='container'>
+        <div className="title-featured">
+          <p>Voucher</p>
         </div>
       </div>
       <Footer/>
