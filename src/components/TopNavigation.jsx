@@ -2,6 +2,7 @@ import React from 'react'
 import Nightlife01 from '../img/Night_Life-logo01.png'
 import Dropdown_link_lang from './Dropdown_link-lang'
 import Dropdown_lang_currency from './Dropdown_lang-currency'
+import Dropdown_Business_customers from './Dropdown_Business-customers'
 import "bootstrap-icons/font/bootstrap-icons.css"
 
 const TopNavigation = ({ isScrolled, currentPage, setCurrentPage }) => {
@@ -35,6 +36,7 @@ const TopNavigation = ({ isScrolled, currentPage, setCurrentPage }) => {
               <a className="item02">Venues</a>
               <a className="item02">Deals</a>
               <a className="item02">News</a>
+              <Dropdown_Business_customers/>
             </div>
           </nav>
         </div>
